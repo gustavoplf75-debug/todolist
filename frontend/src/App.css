@@ -1,0 +1,67 @@
+:root {
+  --bg: #15121f;
+  --card: #1f1b2e;
+  --card-hover: #28233b;
+  --text: #f1eefc;
+  --muted: #9a93b5;
+  --accent1: #8b5cf6;
+  --accent2: #ec4899;
+  --danger: #ef4444;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); min-height: 100vh; }
+button { font: inherit; cursor: pointer; }
+
+.app { max-width: 640px; margin: 0 auto; padding: 32px 20px 120px; }
+header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
+h1 { margin: 0; font-size: 1.6rem; letter-spacing: 2px;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.counters { display: flex; gap: 16px; color: var(--muted); font-size: .9rem; }
+.counters b { color: var(--text); margin-left: 4px; }
+
+.search { width: 100%; padding: 12px 16px; border-radius: 12px; border: 1px solid transparent;
+  background: var(--card); color: var(--text); font-size: 1rem; margin-bottom: 20px; outline: none; }
+.search:focus { border-color: var(--accent1); }
+
+.task-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.task { display: flex; align-items: center; gap: 14px; background: var(--card); padding: 14px 16px; border-radius: 14px; transition: background .15s; }
+.task:hover { background: var(--card-hover); }
+.task-body { flex: 1; min-width: 0; }
+.task-title { display: block; word-break: break-word; }
+.task.done .task-title { text-decoration: line-through; color: var(--muted); }
+.task-title.overdue { color: var(--danger); font-weight: 600; }
+.task-meta { display: flex; gap: 8px; align-items: center; margin-top: 4px; font-size: .78rem; color: var(--muted); }
+.badge { background: rgba(239, 68, 68, .15); color: var(--danger); padding: 2px 8px; border-radius: 999px; font-weight: 600; }
+
+.check { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--muted); background: transparent; color: #fff;
+  display: grid; place-items: center; padding: 0; font-size: .8rem; flex-shrink: 0; }
+.check.checked { border: none; background: linear-gradient(135deg, var(--accent1), var(--accent2)); }
+
+.actions { display: flex; gap: 4px; opacity: 0; transition: opacity .15s; }
+.task:hover .actions, .actions:focus-within { opacity: 1; }
+.actions button { background: transparent; border: none; padding: 6px; border-radius: 8px; font-size: 1rem; }
+.actions button:hover { background: rgba(255,255,255,.08); }
+
+.empty { text-align: center; color: var(--muted); margin-top: 80px; }
+.empty-icon { font-size: 4rem; margin-bottom: 8px; opacity: .7; }
+.loading { text-align: center; color: var(--muted); }
+.error { background: rgba(239,68,68,.12); color: #fca5a5; padding: 10px 14px; border-radius: 10px; margin-bottom: 16px; font-size: .9rem; }
+.error button { margin-left: 8px; background: none; border: 1px solid currentColor; color: inherit; border-radius: 6px; padding: 2px 8px; }
+
+.fab { position: fixed; right: 28px; bottom: 28px; width: 60px; height: 60px; border-radius: 50%; border: none; color: #fff;
+  font-size: 2rem; line-height: 1; background: linear-gradient(135deg, var(--accent1), var(--accent2));
+  box-shadow: 0 8px 24px rgba(139, 92, 246, .45); transition: transform .15s; }
+.fab:hover { transform: scale(1.08); }
+
+.overlay { position: fixed; inset: 0; background: rgba(0,0,0,.6); display: grid; place-items: center; padding: 20px; z-index: 10; }
+.modal { background: var(--card); width: 100%; max-width: 420px; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+.modal h2 { margin: 0; }
+.modal label { display: flex; flex-direction: column; gap: 6px; font-size: .85rem; color: var(--muted); }
+.modal input { padding: 11px 14px; border-radius: 10px; border: 1px solid #3a3453; background: var(--bg); color: var(--text); font-size: 1rem; color-scheme: dark; }
+.modal input:focus { outline: none; border-color: var(--accent1); }
+.modal-actions { display: flex; justify-content: flex-end; gap: 10px; }
+.btn { padding: 10px 18px; border-radius: 10px; border: none; font-weight: 600; }
+.btn.ghost { background: transparent; color: var(--muted); }
+.btn.primary { background: linear-gradient(135deg, var(--accent1), var(--accent2)); color: #fff; }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
